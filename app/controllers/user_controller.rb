@@ -7,7 +7,7 @@ class UserController < ApplicationController
     if user.id == nil
       redirect_to("/user/error")
     else
-      redirect_to("/user/#{user.id}")
+      redirect_to("/user/#{user.username}")
     end
   end
 
