@@ -4,7 +4,6 @@ class UserController < ApplicationController
 
   def create
     user = User.create(username: params[:username], bio: params[:bio])
-    puts user.id.class
     if user.id == nil
       redirect_to("/user/error")
     else
@@ -13,7 +12,12 @@ class UserController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    id = params[:id]
+    if /\d/.match?(id)
+      @user = User.find(id.to_i)
+    else
+      @user = User.find_by(username: id)
+    end
   end
 
   def error
