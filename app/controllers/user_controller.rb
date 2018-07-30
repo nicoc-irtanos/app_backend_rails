@@ -3,8 +3,8 @@ class UserController < ApplicationController
   end
 
   def create
-    User.create!(username: params[:username], bio: params[:bio])
-    redirect_to('/')
+    user = User.create!(username: params[:username], bio: params[:bio])
+    redirect_to("/user/#{user.id}")
   end
 
   def show
