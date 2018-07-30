@@ -6,4 +6,8 @@ class UserController < ApplicationController
     User.create!(username: params[:username], bio: params[:bio])
     redirect_to('/')
   end
+
+  def show
+    @user = User.find(params[:id])
+  end
 end
